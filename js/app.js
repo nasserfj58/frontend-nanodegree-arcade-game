@@ -9,7 +9,7 @@ var Enemy = function(x,y) {
     this.sprite = 'images/enemy-bug.png';
 	this.x=x;
 	this.y=y;
-	this.speed=(Math.random());
+	this.speed=(Math.random()*4);
 	
 	//return obj;
 };
@@ -20,7 +20,9 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-	this.location=this.location*this.speed*dt;
+	//this.location=this.location*this.speed*dt;
+	this.x=this.x+(this.speed*dt);
+	this.render;
 };
 
 // Draw the enemy on the screen, required method for game
@@ -56,17 +58,109 @@ Player.prototype.update = function(dt) {
 // Draw the enemy on the screen, required method for game
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+	//console.log(this.x,this.y);
 };
 
-Player.prototype.handleInput = function(allowedKeys){
+Player.prototype.handleInput = function(key){
+	//console.log(this.y);
+	var xy=this.y;
+	switch(key){
+			
+			
+			
+		   case 'left':
+			if(this.x<=400 && this.x>=0){
+				if(this.x==400||this.x==300||this.x==200||this.x==100)
+				this.x-=100;
+				this.render;
+				break;
+			}	
+			
+			case 'right':
+			if(this.x<=400 && this.x>=0){
+				if(this.x==300||this.x==200||this.x==100||this.x==0)
+				this.x+=100;
+				this.render;
+				break;
+			}	
+			
+			case 'up':
+			if(this.y<=400 && this.y>=50){
+				console.log(this.y);
+				this.y=changeHight(xy,"up");;
+				if(this.y===400)
+					this.x=200;
+				this.render;
+				break;
+			}
+			case 'down':
+			if(this.y<400 && this.y>=50){
+			   	this.y=changeHight(xy,"down");;
+				console.log(this.y);
+				this.render;
+				break;
+			  }
+			
+	}
+	
 	
 };
 
+function changeHight(hight,where){
+	console.log(hight);
+	if(where === "up"){
+		
+			switch(hight){
+					
+					case 400:
+						return hight-100;
+						break;
+								
+					case 300:
+						return hight-70;
+						break;
+				
+					case 230:
+						return hight-80;
+						break;
+				
+					case 150:
+						return hight-100;
+						break;
+					default:
+						return 400;
+				
+		    }
+	}
+	else{
+		
+			switch(hight){
+					
+					case 50:
+						return hight+100;
+						break;
 
+					case 150:
+						return hight+80;
+						break;
+
+					case 230:
+						return hight+70;
+						break;
+
+					case 300:
+						return hight+100;
+						break;
+					
+			}
+			
+		}
+	
+}
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var player = new Player(400,50);
+var player = new Player(200,400);
 
 
 var allEnemies = [];
@@ -89,6 +183,6 @@ document.addEventListener('keyup', function(e) {
         39: 'right',
         40: 'down'
     };
-
-    Player.handleInput(allowedKeys[e.keyCode]);
+	//console.log(allowedKeys[e.keyCode]);
+    player.handleInput(allowedKeys[e.keyCode]);
 });
