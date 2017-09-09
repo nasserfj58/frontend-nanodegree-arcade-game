@@ -9,7 +9,8 @@ var Enemy = function(x,y) {
     this.sprite = 'images/enemy-bug.png';
 	this.x=x;
 	this.y=y;
-	this.speed=(Math.random()*4);
+	this.speed=getRandomNum(40,100);
+	console.log(this.speed);
 	
 	//return obj;
 };
@@ -21,8 +22,17 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
 	//this.location=this.location*this.speed*dt;
+	if(this.x>=505){
+		this.x=-100;
+		//new Enemy(this.x,this.y);
+		this.speed+=getRandomNum(30,100);
+		console.log(this.speed);
+		//this.render;
+		
+	   }
 	this.x=this.x+(this.speed*dt);
-	this.render;
+	console.log("onse");
+	//this.render;
 };
 
 // Draw the enemy on the screen, required method for game
@@ -88,8 +98,14 @@ Player.prototype.handleInput = function(key){
 			if(this.y<=400 && this.y>=50){
 				console.log(this.y);
 				this.y=changeHight(xy,"up");;
-				if(this.y===400)
+				if(this.y===400){
+					console.log("y is 4--");
+					var p=document.getElementsByTagName("p")[0];
+					var a = parseInt(p.innerHTML)+1;
+					p.innerHTML=a;
+					//p.innerHTML+=1;
 					this.x=200;
+				}
 				this.render;
 				break;
 			}
@@ -157,18 +173,25 @@ function changeHight(hight,where){
 		}
 	
 }
+function getRandomNum(min, max) {
+  return Math.random() * (max - min) + min;
+}
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var player = new Player(200,400);
 
-
+//-2,
 var allEnemies = [];
 function putEnemies () {
-  allEnemies.push(new Enemy(-2, 60));
-  //allEnemies.push(new Enemy(-2, 100));
-  allEnemies.push(new Enemy(-2,140));
-  allEnemies.push(new Enemy(-2,230));
+  allEnemies.push(new Enemy(-100, 60));
+  allEnemies.push(new Enemy(-100, 100));
+ // allEnemies.push(new Enemy(-100, 80));
+//  allEnemies.push(new Enemy(-100, 120));
+  allEnemies.push(new Enemy(-100,140));
+	allEnemies.push(new Enemy(-100,190));
+	
+  allEnemies.push(new Enemy(-100,230));
 };
 
 putEnemies();

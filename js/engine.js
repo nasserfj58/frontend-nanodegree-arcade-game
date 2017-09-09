@@ -22,11 +22,15 @@ var Engine = (function(global) {
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
-        lastTime;
+        lastTime,
+		paragaph=doc.createElement('p');
 
     canvas.width = 505;
     canvas.height = 606;
+	paragaph.innerHTML=0;
+	doc.body.appendChild(paragaph);
     doc.body.appendChild(canvas);
+	
 
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
