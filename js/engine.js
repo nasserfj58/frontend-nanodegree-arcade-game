@@ -83,7 +83,8 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        if(checkCollison())
+			reset();
     }
 
     /* This is called by the update function and loops through all of the
@@ -162,8 +163,26 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        // noop
+			
+		player.reset();
+		
+		for(var i=0; i<allEnemies.length; i++){
+				allEnemies[i].reset();
+		}
     }
+	
+	function checkCollison(){
+		//console.log("checkCollison");
+		for(var i=0; i<allEnemies.length; i++){
+			if(player.x === allEnemies[i].x)
+				return true;
+				console.log("checkCollison");
+				//return true;
+				//init();
+		}
+		return false;
+		
+	}
 
     /* Go ahead and load all of the images we know we're going to need to
      * draw our game level. Then set init as the callback method, so that when

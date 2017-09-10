@@ -39,6 +39,10 @@ Enemy.prototype.update = function(dt) {
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+Enemy.prototype.reset=function(){
+	this.x=-100;
+	this.speed=getRandomNum(30,100);
+};
 
 // Now write your own player class
 // This class requires an update(), render() and
@@ -116,11 +120,15 @@ Player.prototype.handleInput = function(key){
 				this.render;
 				break;
 			  }
-			
 	}
 	
 	
 };
+Player.prototype.reset=function(){
+	this.x=200;
+	this.y=400;
+};
+
 
 function changeHight(hight,where){
 	console.log(hight);
