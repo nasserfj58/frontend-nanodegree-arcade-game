@@ -23,11 +23,12 @@ var Engine = (function(global) {
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
         lastTime,
-		paragaph=doc.createElement('p');
+		paragaph=doc.createElement('h1');
 
     canvas.width = 505;
     canvas.height = 606;
 	paragaph.innerHTML=0;
+	paragaph.className="display-4";
 	doc.body.appendChild(paragaph);
     doc.body.appendChild(canvas);
 	
