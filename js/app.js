@@ -10,7 +10,7 @@ var Enemy = function(x,y) {
 	this.x=x;
 	this.y=y;
 	this.speed=getRandomNum(40,100);
-	console.log(this.speed);
+	//console.log(this.speed);
 	
 	//return obj;
 };
@@ -26,12 +26,12 @@ Enemy.prototype.update = function(dt) {
 		this.x=-100;
 		//new Enemy(this.x,this.y);
 		this.speed+=getRandomNum(30,100);
-		console.log(this.speed);
+		//console.log(this.speed);
 		//this.render;
 		
 	   }
 	this.x=this.x+(this.speed*dt);
-	console.log("onse");
+	//console.log("onse");
 	//this.render;
 };
 
@@ -100,13 +100,13 @@ Player.prototype.handleInput = function(key){
 			
 			case 'up':
 			if(this.y<=400 && this.y>=50){
-				console.log(this.y);
+				//console.log(this.y);
 				this.y=changeHight(xy,"up");;
 				if(this.y===400){
-					console.log("y is 4--");
-					var p=document.getElementsByTagName("p")[0];
-					var a = parseInt(p.innerHTML)+1;
-					p.innerHTML=a;
+					//console.log("y is 4--");
+					var x1=document.getElementsByTagName("h1")[0];
+					var a = parseInt(x1.innerHTML)+1;
+					x1.innerHTML=a;
 					//p.innerHTML+=1;
 					this.x=200;
 				}
@@ -116,7 +116,7 @@ Player.prototype.handleInput = function(key){
 			case 'down':
 			if(this.y<400 && this.y>=50){
 			   	this.y=changeHight(xy,"down");;
-				console.log(this.y);
+				//console.log(this.y);
 				this.render;
 				break;
 			  }
@@ -131,7 +131,7 @@ Player.prototype.reset=function(){
 
 
 function changeHight(hight,where){
-	console.log(hight);
+	//console.log(hight);
 	if(where === "up"){
 		
 			switch(hight){

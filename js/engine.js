@@ -29,6 +29,7 @@ var Engine = (function(global) {
     canvas.height = 606;
 	paragaph.innerHTML=0;
 	paragaph.className="display-4";
+	paragaph.innerHTML=0;
 	doc.body.appendChild(paragaph);
     doc.body.appendChild(canvas);
 	
@@ -177,7 +178,7 @@ var Engine = (function(global) {
 		for(var i=0; i<allEnemies.length; i++){
 			if(player.x === allEnemies[i].x)
 				return true;
-				console.log("checkCollison");
+				//console.log("checkCollison");
 				//return true;
 				//init();
 		}
