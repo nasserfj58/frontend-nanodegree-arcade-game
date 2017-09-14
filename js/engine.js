@@ -176,9 +176,12 @@ var Engine = (function(global) {
 	function checkCollison(){
 		//console.log("checkCollison");
 		for(var i=0; i<allEnemies.length; i++){
-			if(player.x === allEnemies[i].x)
-				return true;
-				//console.log("checkCollison");
+			if( (player.x >= allEnemies[i].x+10 && player.x <= allEnemies[i].x+100) && player.y === allEnemies[i].y){
+				paragaph.innerHTML=0;
+				return true;	
+			}
+				
+				console.log("checkCollison");
 				//return true;
 				//init();
 		}
