@@ -87,7 +87,7 @@ Player.prototype.handleInput = function(key){
 
 		   case 'left':
 			if(this.x<=400 && this.x>=0){
-				if(this.x==400||this.x==300||this.x==200||this.x==100)
+				if(this.x===400||this.x===300||this.x===200||this.x===100)
 				this.x-=100;
 				this.render;
 				break;
@@ -95,7 +95,7 @@ Player.prototype.handleInput = function(key){
 			
 			case 'right':
 			if(this.x<=400 && this.x>=0){
-				if(this.x==300||this.x==200||this.x==100||this.x==0)
+				if(this.x===300||this.x===200||this.x===100||this.x===0)
 				this.x+=100;
 				this.render;
 				break;
