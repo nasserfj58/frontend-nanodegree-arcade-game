@@ -69,7 +69,7 @@ var Engine = (function(global) {
      * game loop.
      */
     function init() {
-        reset();
+        //reset();
         lastTime = Date.now();
         main();
     }
@@ -164,20 +164,13 @@ var Engine = (function(global) {
      * handle game reset states - maybe a new game menu or a game over screen
      * those sorts of things. It's only called once by the init() method.
      */
-    function reset() {
-			
-		player.reset();
-		
-		for(var i=0; i<allEnemies.length; i++){
-				allEnemies[i].reset();
-		}
-    }
+    
 	
 	function checkCollison(){
-		//console.log("checkCollison");
 		for(var i=0; i<allEnemies.length; i++){
-			if( (player.x >= allEnemies[i].x+10 && player.x <= allEnemies[i].x+100) && player.y === allEnemies[i].y){
+			if( (player.x >= allEnemies[i].x+10 && player.x <= allEnemies[i].x+100) && checkEqulity(player.y, allEnemies[i].y)){
 				paragaph.innerHTML=0;
+				reset();
 				return true;	
 			}
 				
@@ -187,6 +180,14 @@ var Engine = (function(global) {
 		}
 		return false;
 		
+	}
+	
+	function checkEqulity(playerY,enemyY){
+		
+		if(playerY>=enemyY+10 && Player<= enemyY+100)
+		   return true;
+		   
+		   return false;
 	}
 
     /* Go ahead and load all of the images we know we're going to need to
@@ -208,3 +209,12 @@ var Engine = (function(global) {
      */
     global.ctx = ctx;
 })(this);
+
+function reset() {
+			
+		player.reset();
+		
+		for(var i=0; i<allEnemies.length; i++){
+				allEnemies[i].reset();
+		}
+    }

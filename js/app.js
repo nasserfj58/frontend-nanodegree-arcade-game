@@ -9,7 +9,7 @@ var Enemy = function(x,y) {
     this.sprite = 'images/enemy-bug.png';
 	this.x=x;
 	this.y=y;
-	this.speed=getRandomNum(40,100);
+	this.speed=getRandomNum(0,100);
 	//console.log(this.speed);
 	
 	//return obj;
@@ -33,7 +33,7 @@ Enemy.prototype.update = function(dt) {
 	this.speed+=getRandomNum(0,30);
 	
 	if(this.x<0)
-		this.speed+=100;
+		this.speed+=10;
 	
 	this.x=this.x+(this.speed*dt);
 	//console.log("onse");
@@ -46,6 +46,7 @@ Enemy.prototype.render = function() {
 };
 Enemy.prototype.reset=function(){
 	this.x=-100;
+	this.y=getRandomNum(60,220);
 	this.speed=getRandomNum(40,100);
 };
 
@@ -134,7 +135,7 @@ Player.prototype.reset=function(){
 
 
 function changeHight(hight,where){
-	//console.log(hight);
+	
 	if(where === "up"){
 		
 			switch(hight){
@@ -164,15 +165,15 @@ function changeHight(hight,where){
 			switch(hight){
 					
 					case 50:
+						return hight+70;
+						break;
+
+					case 120:
 						return hight+100;
 						break;
 
-					case 150:
+					case 220:
 						return hight+80;
-						break;
-
-					case 230:
-						return hight+70;
 						break;
 
 					case 300:
@@ -190,17 +191,18 @@ function getRandomNum(min, max) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var player = new Player(110,400);
+var player = new Player(200,300);
 
 //-2,
 var allEnemies = [];
+
 function putEnemies () {
 	
   allEnemies.push(new Enemy(-100, 60));
   allEnemies.push(new Enemy(-100, 100));
   allEnemies.push(new Enemy(-100,140));
-  allEnemies.push(new Enemy(-100,190));
-  allEnemies.push(new Enemy(-100,230));
+  allEnemies.push(new Enemy(-100,180));
+  allEnemies.push(new Enemy(-100,220));
 };
 
 putEnemies();
