@@ -78,11 +78,9 @@ Player.prototype.update = function(dt) {
 // Draw the enemy on the screen, required method for game
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-	//console.log(this.x,this.y);
 };
 
 Player.prototype.handleInput = function(key){
-	//console.log(this.y);
 	var xy=this.y;
 	switch(key){
 
@@ -136,55 +134,55 @@ Player.prototype.reset=function(){
 
 function changeHight(hight,where){
 	
+	var num=-1;
 	if(where === "up"){
 		
 			switch(hight){
 					
 					case 400:
-						return hight-100;
-						break;
+						num = hight-100;
+						
 								
 					case 300:
-						return hight-70;
-						break;
+						num = hight-70;
+						
 				
 					case 230:
-						return hight-80;
-						break;
+						num = hight-80;
 				
 					case 150:
-						return hight-100;
+						num = hight-100;
 						break;
 					default:
-						return 400;
-				
+						num = 400;
 		    }
 	}
+	
 	else{
 		
 			switch(hight){
 					
 					case 50:
-						return hight+70;
-						break;
+						num = hight+100;
 
-					case 120:
-						return hight+100;
-						break;
-
-					case 220:
-						return hight+80;
-						break;
+					case 150:
+						num = hight+80;
+				
+					case 230:
+						num = hight+70;
+					
 
 					case 300:
-						return hight+100;
-						break;
+						num = hight+100;
 					
 			}
 			
 		}
 	
+	return num;
+	
 }
+
 function getRandomNum(min, max) {
   return Math.random() * (max - min) + min;
 }
