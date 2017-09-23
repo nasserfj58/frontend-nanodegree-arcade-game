@@ -136,28 +136,8 @@ function changeHight(hight,where){
 	
 	var num=-1;
 	if(where === "up"){
-		
-			switch(hight){
-					
-					case 400:
-						num = hight-100;
-						
-								
-					case 300:
-						num = hight-70;
-						
-				
-					case 230:
-						num = hight-80;
-				
-					case 150:
-						num = hight-100;
-						break;
-					default:
-						num = 400;
-		    }
-	}
-	
+		HightChanger([400,300,230,150],hight);
+		}
 	else{
 		
 			switch(hight){
@@ -181,6 +161,30 @@ function changeHight(hight,where){
 	
 	return num;
 	
+}
+
+HightChanger(hights[],hight){
+	
+	num =-1;
+	switch(hight){
+					
+					case hights[0] :
+						num = hight-100;
+						
+								
+					case hights[1]:
+						num = hight-70;
+						
+				
+					case hights[2]:
+						num = hight-80;
+				
+					case hights[3]:
+						num = hight-100;
+		
+					default:
+						num = 400;
+		    }
 }
 
 function getRandomNum(min, max) {

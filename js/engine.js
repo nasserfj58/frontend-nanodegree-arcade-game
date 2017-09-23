@@ -23,7 +23,7 @@ var Engine = (function(global) {
         ctx = canvas.getContext('2d'),
         lastTime,
 		paragaph=doc.createElement('h1');
-
+	
     canvas.width = 505;
     canvas.height = 606;
 	paragaph.innerHTML=0;
