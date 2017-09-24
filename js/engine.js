@@ -166,13 +166,13 @@ var Engine = (function(global) {
 	
 	function checkCollison(){
 		for(var i=0; i<allEnemies.length; i++){
-			if( (player.x >= allEnemies[i].x+10 && player.x <= allEnemies[i].x+100) && checkEqulity(player.y, allEnemies[i].y)){
+			if( (player.x >= allEnemies[i].x-80 && player.x<= allEnemies[i].x+80) && checkEqulity(player.y, allEnemies[i].y)){
 				paragaph.innerHTML=0;
 				reset();
 				return true;	
 			}
 				
-				console.log("checkCollison");
+				//console.log("checkCollison");
 				//return true;
 				//init();
 		}
@@ -182,7 +182,7 @@ var Engine = (function(global) {
 	
 	function checkEqulity(playerY,enemyY){
 		
-		if(playerY>=enemyY+10 && Player<= enemyY+100)
+		if(playerY===enemyY)
 		   return true;
 		   
 		   return false;

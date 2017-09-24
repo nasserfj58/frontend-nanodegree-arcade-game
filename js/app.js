@@ -9,7 +9,7 @@ var Enemy = function(x,y) {
     this.sprite = 'images/enemy-bug.png';
 	this.x=x;
 	this.y=y;
-	this.speed=getRandomNum(0,100);
+	this.speed=getRandomNum(0,20);
 	//console.log(this.speed);
 	
 	//return obj;
@@ -30,12 +30,14 @@ Enemy.prototype.update = function(dt) {
 		//console.log(this.speed);
 		//this.render;
 	   }
-	this.speed+=getRandomNum(0,30);
+	this.speed+=getRandomNum(0,5);
 	
 	if(this.x<0)
 		this.speed+=10;
 	
-	this.x=this.x+(this.speed*dt);
+    this.x=this.x+(this.speed*dt);
+	//this.x=this.x;
+	//console.log(this.x+"   "+this.y);
 	//console.log("onse");
 	//this.render;
 };
@@ -46,8 +48,10 @@ Enemy.prototype.render = function() {
 };
 Enemy.prototype.reset=function(){
 	this.x=-100;
-	this.y=getRandomNum(60,220);
-	this.speed=getRandomNum(40,100);
+	var postionos=[50,150,230];
+	//console.log(parseInt(getRandomNum(0,3)));
+	this.y=postionos[parseInt(getRandomNum(0,3))];
+	this.speed=getRandomNum(0,20);
 };
 
 // Now write your own player class
@@ -73,6 +77,8 @@ Player.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
 	this.location=this.location*this.speed*dt;
+	console.log(this.x+"   "+this.y);
+	
 };
 
 // Draw the enemy on the screen, required method for game
@@ -133,58 +139,51 @@ Player.prototype.reset=function(){
 
 
 function changeHight(hight,where){
+	var hights;
 	
-	var num=-1;
-	if(where === "up"){
-		HightChanger([400,300,230,150],hight);
-		}
-	else{
+	if(where === "up")
+		hights = [400,300,230,150];
+	else
+		hights = [50,150,230,300];
 		
-			switch(hight){
-					
-					case 50:
-						num = hight+100;
-
-					case 150:
-						num = hight+80;
-				
-					case 230:
-						num = hight+70;
-					
-
-					case 300:
-						num = hight+100;
-					
-			}
-			
-		}
-	
-	return num;
+	return HightChanger(hights,hight,where);
 	
 }
 
-HightChanger(hights[],hight){
+function HightChanger(hights,hight,postion){
 	
 	num =-1;
 	switch(hight){
 					
 					case hights[0] :
-						num = hight-100;
+						if(postion==="up")
+						   num = hight-100;
+						else
+						   num = hight+100;
+						break;
 						
-								
 					case hights[1]:
-						num = hight-70;
-						
-				
+						if(postion==="up")
+							num = hight-70;
+						else
+							num = hight+70;
+						break;
 					case hights[2]:
-						num = hight-80;
-				
+						if(postion==="up")
+							num = hight-80;
+						else
+							num = hight+80;
+						break;
 					case hights[3]:
-						num = hight-100;
-		
+						if(postion==="up")
+							num = hight-100;
+						else
+							num = hight+100;
+						break;
 					default:
 						num = 400;
 		    }
+	return num;
 }
 
 function getRandomNum(min, max) {
@@ -193,18 +192,21 @@ function getRandomNum(min, max) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var player = new Player(200,300);
+var player = new Player(200,400);
+//var player2=new Player(200,300);
+//player2.sprite='images/enemy-bug.png';
 
 //-2,
 var allEnemies = [];
 
 function putEnemies () {
 	
-  allEnemies.push(new Enemy(-100, 60));
-  allEnemies.push(new Enemy(-100, 100));
-  allEnemies.push(new Enemy(-100,140));
-  allEnemies.push(new Enemy(-100,180));
-  allEnemies.push(new Enemy(-100,220));
+ // allEnemies.push(new Enemy(-100, 60));
+ // allEnemies.push(new Enemy(-100, 100));
+  allEnemies.push(new Enemy(-100,230));
+  allEnemies.push(new Enemy(-100,150));
+  allEnemies.push(new Enemy(-100,50));
+	//220-300>380
 };
 
 putEnemies();
